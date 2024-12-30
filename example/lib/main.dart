@@ -97,9 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         sdkappid: TencentCloudDeskCustomerDemoConfig.sdkAppID,
                         key: TencentCloudDeskCustomerDemoConfig.secret,
                       ).genSig(identifier: userId, expire: 999999),
-                      config: TencentCloudCustomerConfig(
-                        useMessageReadReceipt: true,
-                      ),
+                      config: TencentCloudCustomerConfig(),
                     );
                     if (res.code == 0) {
                       setState(() {
