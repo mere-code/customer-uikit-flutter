@@ -82,7 +82,7 @@ class TIMUIKitTextFieldLayoutWide extends StatefulWidget {
   /// sticker panel customization
   final CustomStickerPanel? customStickerPanel;
   final VoidCallback onEmojiSubmitted;
-  final Function(int, String) onCustomEmojiFaceSubmitted;
+  final Function(int, String, int?) onCustomEmojiFaceSubmitted;
   final Function(String, bool) handleSendEditStatus;
   final VoidCallback backSpaceText;
   final ValueChanged<String> addStickerToText;
@@ -397,8 +397,8 @@ class _TIMUIKitTextFieldLayoutWideState extends TIMUIKitState<TIMUIKitTextFieldL
                             height: widget.chatConfig.desktopStickerPanelHeight,
                             width: 350,
                             sendTextMsg: null,
-                            sendFaceMsg: (_, __) {
-                              widget.onCustomEmojiFaceSubmitted(_, __);
+                            sendFaceMsg: (_, __, ___) {
+                              widget.onCustomEmojiFaceSubmitted(_, __, ___);
                               entry?.remove();
                               entry = null;
                             },

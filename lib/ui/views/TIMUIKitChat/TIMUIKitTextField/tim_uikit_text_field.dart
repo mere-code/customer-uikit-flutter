@@ -28,7 +28,7 @@ enum MuteStatus { none, me, all }
 
 typedef CustomStickerPanel = Widget Function({
   void Function() sendTextMessage,
-  void Function(int index, String data) sendFaceMessage,
+  void Function(int index, String data, int? id) sendFaceMessage,
   void Function() deleteText,
   void Function(int unicode) addText,
   void Function(String singleEmojiName) addCustomEmojiText,
@@ -318,7 +318,7 @@ class _InputTextFieldState extends TIMUIKitState<TIMUIKitInputTextField> {
   }
 
   // index为emoji的index,data为baseurl+name
-  _onCustomEmojiFaceSubmitted(int index, String data) {
+  _onCustomEmojiFaceSubmitted(int index, String data, int? id) {
     final convType = widget.conversationType;
 
     // This part of the code is written to adapt to the Native side requirements.

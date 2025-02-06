@@ -28,7 +28,7 @@ class TIMUIKitTextFieldLayoutNarrow extends StatefulWidget {
   final CustomStickerPanel? customStickerPanel;
 
   final VoidCallback onEmojiSubmitted;
-  final Function(int, String) onCustomEmojiFaceSubmitted;
+  final Function(int, String, int?) onCustomEmojiFaceSubmitted;
   final Function(String, bool) handleSendEditStatus;
   final VoidCallback backSpaceText;
   final ValueChanged<String> addStickerToText;
