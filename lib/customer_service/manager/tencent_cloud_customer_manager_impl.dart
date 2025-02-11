@@ -9,6 +9,7 @@ typedef TencentCloudCustomerInit = Future<V2TimCallback> Function(
     {TencentCloudCustomerConfig? config, required int sdkAppID, required String userID, required String userSig});
 typedef TencentCloudCustomerNavigate = V2TimCallback Function(
     {TencentCloudCustomerConfig? config, required BuildContext context, required String customerServiceID});
+typedef TencentCloudCustomerDispose = Future<V2TimCallback> Function();
 
 class TencentCloudCustomerManagerImpl {
   final TCustomerCoreServicesImpl _timCoreInstance = TencentCloudCustomer.getIMUIKitInstance();
@@ -104,5 +105,9 @@ class TencentCloudCustomerManagerImpl {
       code: 0,
       desc: '',
     );
+  }
+
+  Future<V2TimCallback> dispose()  {
+    return _timCoreInstance.logout();
   }
 }

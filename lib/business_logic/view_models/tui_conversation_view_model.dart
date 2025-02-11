@@ -205,7 +205,7 @@ class TCustomerConversationViewModel extends ChangeNotifier {
   String? getWebDraft({
     required String conversationID,
   }) {
-    return TencentUtils.checkString(webDraftMap[conversationID]);
+    return TencentDeskUtils.checkString(webDraftMap[conversationID]);
   }
 
   clearData() {

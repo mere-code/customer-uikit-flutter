@@ -108,9 +108,9 @@ class TIMUIKitMessageTooltipState
     }
     if (PlatformUtils().isDesktop) {
       if (widget.message.fileElem != null) {
-        String savePath = TencentUtils.checkString(
+        String savePath = TencentDeskUtils.checkString(
                 globalModal.getFileMessageLocation(widget.message.msgID)) ??
-            TencentUtils.checkString(widget.message.fileElem!.localUrl) ??
+            TencentDeskUtils.checkString(widget.message.fileElem!.localUrl) ??
             widget.message.fileElem?.path ??
             "";
         File f = File(savePath);
@@ -120,7 +120,7 @@ class TIMUIKitMessageTooltipState
           return;
         }
       } else if (widget.message.imageElem != null) {
-        if (TencentUtils.checkString(
+        if (TencentDeskUtils.checkString(
                     widget.message.imageElem!.imageList![0]!.localUrl) !=
                 null &&
             File(widget.message.imageElem!.imageList![0]!.localUrl!)
@@ -129,7 +129,7 @@ class TIMUIKitMessageTooltipState
           return;
         }
       } else if (widget.message.videoElem != null) {
-        if (TencentUtils.checkString(widget.message.videoElem!.localVideoUrl) !=
+        if (TencentDeskUtils.checkString(widget.message.videoElem!.localVideoUrl) !=
                 null &&
             File(widget.message.videoElem!.localVideoUrl!).existsSync()) {
           fileBeenDownloaded = true;
@@ -195,7 +195,7 @@ class TIMUIKitMessageTooltipState
     bool showTranslation = true;
     if (widget.message.localCustomData != null) {
       final LocalCustomDataModel localCustomData = LocalCustomDataModel.fromMap(
-          json.decode(TencentUtils.checkString(widget.message.localCustomData) ?? "{}"));
+          json.decode(TencentDeskUtils.checkString(widget.message.localCustomData) ?? "{}"));
       if (localCustomData.translatedText != null && localCustomData.translatedText != "") {
         showTranslation = false;
       }
@@ -410,40 +410,40 @@ class TIMUIKitMessageTooltipState
     switch (operation) {
       case "open":
         if (widget.message.fileElem != null) {
-          _onOpenDesktop(TencentUtils.checkString(
+          _onOpenDesktop(TencentDeskUtils.checkString(
                   globalModal.getFileMessageLocation(widget.message.msgID)) ??
-              TencentUtils.checkString(widget.message.fileElem!.localUrl) ??
+              TencentDeskUtils.checkString(widget.message.fileElem!.localUrl) ??
               widget.message.fileElem?.path ??
               "");
         } else if (widget.message.imageElem != null) {
-          _onOpenDesktop(TencentUtils.checkString(
+          _onOpenDesktop(TencentDeskUtils.checkString(
                   widget.message.imageElem!.imageList?[0]?.localUrl) ??
-              TencentUtils.checkString(widget.message.imageElem?.path) ??
+              TencentDeskUtils.checkString(widget.message.imageElem?.path) ??
               "");
         } else if (widget.message.videoElem != null) {
-          _onOpenDesktop(TencentUtils.checkString(
+          _onOpenDesktop(TencentDeskUtils.checkString(
                   widget.message.videoElem!.localVideoUrl) ??
-              TencentUtils.checkString(widget.message.videoElem?.videoPath) ??
+              TencentDeskUtils.checkString(widget.message.videoElem?.videoPath) ??
               "");
         }
         break;
       case "finder":
         String savePath = "";
         if (widget.message.fileElem != null) {
-          savePath = (TencentUtils.checkString(
+          savePath = (TencentDeskUtils.checkString(
                   globalModal.getFileMessageLocation(widget.message.msgID)) ??
-              TencentUtils.checkString(widget.message.fileElem!.localUrl) ??
+              TencentDeskUtils.checkString(widget.message.fileElem!.localUrl) ??
               widget.message.fileElem?.path ??
               "");
         } else if (widget.message.imageElem != null) {
-          savePath = (TencentUtils.checkString(
+          savePath = (TencentDeskUtils.checkString(
                   widget.message.imageElem!.imageList?[0]?.localUrl) ??
-              TencentUtils.checkString(widget.message.imageElem?.path) ??
+              TencentDeskUtils.checkString(widget.message.imageElem?.path) ??
               "");
         } else if (widget.message.videoElem != null) {
-          savePath = (TencentUtils.checkString(
+          savePath = (TencentDeskUtils.checkString(
                   widget.message.videoElem!.localVideoUrl) ??
-              TencentUtils.checkString(widget.message.videoElem?.videoPath) ??
+              TencentDeskUtils.checkString(widget.message.videoElem?.videoPath) ??
               "");
         }
         final String fileDir = path.dirname(savePath);
@@ -495,7 +495,7 @@ class TIMUIKitMessageTooltipState
             model.chatConfig.isAtWhenReplyDynamic?.call(widget.message);
         final isSelf = widget.message.isSelf ?? true;
         final isGroup =
-            TencentUtils.checkString(widget.message.groupID) != null;
+            TencentDeskUtils.checkString(widget.message.groupID) != null;
         final isAtWhenReply = !isSelf &&
             isGroup &&
             (dynamicQuote ?? widget.allowAtUserWhenReply) &&

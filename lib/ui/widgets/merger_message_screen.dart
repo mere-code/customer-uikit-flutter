@@ -59,7 +59,7 @@ class MergerMessageScreenState extends TIMUIKitState<MergerMessageScreen> {
     if (hasCustomData) {
       try {
         final CloudCustomData messageCloudCustomData = CloudCustomData.fromJson(json.decode(
-            TencentUtils.checkString(message.cloudCustomData) != null
+            TencentDeskUtils.checkString(message.cloudCustomData) != null
                 ? message.cloudCustomData!
                 : "{}"));
         if (messageCloudCustomData.messageReply != null) {

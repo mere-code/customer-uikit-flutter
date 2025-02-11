@@ -133,7 +133,7 @@ class _TIMUIKitHistoryMessageListTongueContainerState extends TIMUIKitState<TIMU
                 try {
                   isClickShowPrevious = true;
                   final String? lastSeqString = widget.conversation.lastMessage?.seq;
-                  final int? lastSeq = TencentUtils.checkString(lastSeqString) != null ? int.parse(lastSeqString!) : null;
+                  final int? lastSeq = TencentDeskUtils.checkString(lastSeqString) != null ? int.parse(lastSeqString!) : null;
                   final int? previousCount = widget.conversation.unreadCount;
                   if (lastSeq != null && previousCount != null) {
                     final targetSeq = lastSeq - previousCount;

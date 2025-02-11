@@ -177,6 +177,7 @@ class _TIMUIKitHistoryMessageListContainerState
                 groupMemberInfo: widget.groupMemberInfo,
                 textFieldController: widget.textFieldController,
                 userAvatarBuilder: widget.userAvatarBuilder,
+                textPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 17,),
                 customEmojiStickerList: widget.customEmojiStickerList,
                 topRowBuilder: _getTopRowBuilder(model),
                 onScrollToIndex: _historyMessageListController.scrollToIndex,

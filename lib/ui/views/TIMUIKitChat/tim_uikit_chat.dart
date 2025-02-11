@@ -295,7 +295,7 @@ class _TUIChatState extends TIMUIKitState<TencentCloudCustomerMessage> {
       final topicInfoList = await TencentImSDKPlugin.v2TIMManager.getGroupManager().getTopicInfoList(groupID: widget.groupID!, topicIDList: [widget.conversation.conversationID]);
       final topicInfo = topicInfoList.data?.first.topicInfo;
       final draftText = topicInfo?.draftText;
-      if (TencentUtils.checkString(draftText) != null) {
+      if (TencentDeskUtils.checkString(draftText) != null) {
         textFieldController.setTextField(draftText!);
       }
     }
@@ -336,11 +336,11 @@ class _TUIChatState extends TIMUIKitState<TencentCloudCustomerMessage> {
   }
 
   String _getTitle() {
-    return TencentUtils.checkString(widget.conversationShowName) ?? widget.conversation.showName ?? "Chat";
+    return TencentDeskUtils.checkString(widget.conversationShowName) ?? widget.conversation.showName ?? "Chat";
   }
 
   String _getConvID() {
-    return TencentUtils.checkString(widget.conversationID) ?? (widget.conversation.type == 1 ? widget.conversation.userID : widget.conversation.groupID) ?? "";
+    return TencentDeskUtils.checkString(widget.conversationID) ?? (widget.conversation.type == 1 ? widget.conversation.userID : widget.conversation.groupID) ?? "";
   }
 
   ConvType _getConvType() {
@@ -536,10 +536,10 @@ class _TUIChatState extends TIMUIKitState<TencentCloudCustomerMessage> {
                                   scrollController: autoController,
                                   conversationID: _getConvID(),
                                   conversationType: _getConvType(),
-                                  initText: TencentUtils.checkString(widget.draftText) ??
+                                  initText: TencentDeskUtils.checkString(widget.draftText) ??
                                       (PlatformUtils().isWeb
-                                          ? TencentUtils.checkString(conversationViewModel.getWebDraft(conversationID: widget.conversation.conversationID))
-                                          : TencentUtils.checkString(widget.conversation.draftText)),
+                                          ? TencentDeskUtils.checkString(conversationViewModel.getWebDraft(conversationID: widget.conversation.conversationID))
+                                          : TencentDeskUtils.checkString(widget.conversation.draftText)),
                                   hintText: widget.textFieldHintText,
                                   showMorePanel: widget.config?.isAllowShowMorePanel ?? true,
                                   showSendAudio: widget.config?.isAllowSoundMessage ?? true,

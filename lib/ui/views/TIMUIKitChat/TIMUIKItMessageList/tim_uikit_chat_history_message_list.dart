@@ -408,7 +408,7 @@ class _TIMUIKitHistoryMessageListState extends TIMUIKitState<TIMUIKitHistoryMess
                                 final messageItem = readMessageList[index];
                                 if (index == readMessageList.length - 1) {
                                   if (haveMoreData) {
-                                    final lastMessage = globalModel.messageListMap[TencentUtils.checkString(widget.conversation.groupID) ?? widget.conversation.userID ?? widget.conversation.conversationID]?.last;
+                                    final lastMessage = globalModel.messageListMap[TencentDeskUtils.checkString(widget.conversation.groupID) ?? widget.conversation.userID ?? widget.conversation.conversationID]?.last;
                                     if (lastMessage != null) {
                                       throttleFunctionWithMsgID(lastMessage.msgID ?? "", LoadDirection.previous);
                                     } else {

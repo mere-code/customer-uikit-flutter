@@ -68,7 +68,7 @@ class _MessageRobotWelcomeState extends TIMState<MessageRobotWelcome> {
                     item['content'],
                     style: const TextStyle(
                       color: Color(0xFF006EFF),
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.bold,
                       fontSize: 14,
                     ),
                   ),
@@ -114,7 +114,7 @@ class _MessageRobotWelcomeState extends TIMState<MessageRobotWelcome> {
                     title,
                     style: const TextStyle(
                       fontSize: 14,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),

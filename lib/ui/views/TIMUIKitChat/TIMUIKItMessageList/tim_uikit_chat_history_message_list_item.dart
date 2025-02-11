@@ -360,7 +360,7 @@ class _TIMUIKItHistoryMessageListItemState extends TIMUIKitState<TIMUIKitHistory
     final hasCustomData = message.cloudCustomData != null && message.cloudCustomData != "";
     if (hasCustomData) {
       try {
-        final CloudCustomData messageCloudCustomData = CloudCustomData.fromJson(json.decode(TencentUtils.checkString(message.cloudCustomData) != null ? message.cloudCustomData! : "{}"));
+        final CloudCustomData messageCloudCustomData = CloudCustomData.fromJson(json.decode(TencentDeskUtils.checkString(message.cloudCustomData) != null ? message.cloudCustomData! : "{}"));
         if (messageCloudCustomData.messageReply != null) {
           MessageRepliedData.fromJson(messageCloudCustomData.messageReply!);
           return true;
@@ -922,7 +922,7 @@ class _TIMUIKItHistoryMessageListItemState extends TIMUIKitState<TIMUIKitHistory
           onClick: (_) {
             model.repliedMessage = widget.message;
             final isSelf = widget.message.isSelf ?? true;
-            final isGroup = TencentUtils.checkString(widget.message.groupID) != null;
+            final isGroup = TencentDeskUtils.checkString(widget.message.groupID) != null;
             final isAtWhenReply = !isSelf && isGroup && widget.allowAtUserWhenReply && widget.onLongPressForOthersHeadPortrait != null;
 
             /// If replying to a self message, do not add a at tag, only requestFocus.
@@ -1129,7 +1129,7 @@ class _TIMUIKItHistoryMessageListItemState extends TIMUIKitState<TIMUIKitHistory
     }
 
     if (isRevokedMsg) {
-      final displayName = isAdminRevoke ? TIM_t("管理员") : (isSelf ? TIM_t("您") : TencentUtils.checkString(message.nickName) ?? TencentUtils.checkString(message.sender) ?? message.userID);
+      final displayName = isAdminRevoke ? TIM_t("管理员") : (isSelf ? TIM_t("您") : TencentDeskUtils.checkString(message.nickName) ?? TencentDeskUtils.checkString(message.sender) ?? message.userID);
       return isSelf && isRevokeEditable && isRevocable(message.timestamp!) ? _selfRevokeEditMessageBuilder(theme, model) : _revokedMessageBuilder(theme, displayName ?? "");
     }
 

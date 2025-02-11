@@ -50,7 +50,7 @@ class _TencentCloudCustomerMessageContainerState extends TIMUIKitState<TencentCl
   void didUpdateWidget(TencentCloudCustomerMessageContainer oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.customerServiceUserID != widget.customerServiceUserID &&
-        TencentUtils.checkString(widget.customerServiceUserID) != null) {
+        TencentDeskUtils.checkString(widget.customerServiceUserID) != null) {
       _sendStartMessage(0);
     }
   }
@@ -112,10 +112,10 @@ class _TencentCloudCustomerMessageContainerState extends TIMUIKitState<TencentCl
       targetConversation = V2TimConversation(
         conversationID: conversationID,
         userID: widget.customerServiceUserID,
-        faceUrl: TencentUtils.checkString(userProfile?.faceUrl),
-        showName: TencentUtils.checkString(userProfile?.nickName) ??
-            TencentUtils.checkString(userProfile?.userID) ??
-            TencentUtils.checkString(widget.customerServiceUserID) ??
+        faceUrl: TencentDeskUtils.checkString(userProfile?.faceUrl),
+        showName: TencentDeskUtils.checkString(userProfile?.nickName) ??
+            TencentDeskUtils.checkString(userProfile?.userID) ??
+            TencentDeskUtils.checkString(widget.customerServiceUserID) ??
             TIM_t("智能客服"),
         type: 1,
       );
@@ -207,6 +207,7 @@ class _TencentCloudCustomerMessageContainerState extends TIMUIKitState<TencentCl
                 config: TIMUIKitChatConfig(
                   isUseMessageReaction: false,
                   isShowAvatar: false,
+                  textHeight: kTextHeightNone,
                   isShowReadingStatus: widget.config.useMessageReadReceipt ?? false,
                   stickerPanelConfig: StickerPanelConfig(
                     useTencentCloudChatStickerPackage: true,

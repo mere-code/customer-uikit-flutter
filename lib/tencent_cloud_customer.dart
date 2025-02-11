@@ -44,6 +44,7 @@ class TencentCloudCustomer {
   static TencentCloudCustomerManager get _manager => TencentCloudCustomerManager();
   static TencentCloudCustomerInit get init => _manager.init;
   static TencentCloudCustomerNavigate get navigate => _manager.navigate;
+  static TencentCloudCustomerDispose get dispose => _manager.dispose;
 
   static TCustomerCoreServicesImpl getIMUIKitInstance() {
     setupIMServiceLocator();

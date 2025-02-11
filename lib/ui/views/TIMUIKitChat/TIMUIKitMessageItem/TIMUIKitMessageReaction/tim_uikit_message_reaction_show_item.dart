@@ -69,8 +69,8 @@ class TIMUIKitMessageReactionShowItem extends TIMUIKitStatelessWidget {
     final List<String> userIDs = [];
     for (final user in nameList) {
       final V2TimGroupMemberFullInfo? memberInfo = memberList
-          .firstWhereOrNull((element) => element?.userID == user && TencentUtils.checkString(user) != null);
-      if((memberInfo == null || TencentUtils.checkString(memberInfo.userID) == null) && TencentUtils.checkString(user.toString()) != null){
+          .firstWhereOrNull((element) => element?.userID == user && TencentDeskUtils.checkString(user) != null);
+      if((memberInfo == null || TencentDeskUtils.checkString(memberInfo.userID) == null) && TencentDeskUtils.checkString(user.toString()) != null){
         userIDs.add(user.toString());
       }
     }
@@ -157,19 +157,19 @@ class TIMUIKitMessageReactionShowItem extends TIMUIKitStatelessWidget {
                           }
                         }else{
                           final String? data = model.groupUserShowName[e];
-                          if(TencentUtils.checkString(data) != null){
+                          if(TencentDeskUtils.checkString(data) != null){
                             showName = data ?? e;
                           }
                         }
                       } catch (error) {
                         final String? data = model.groupUserShowName[e];
-                        if(TencentUtils.checkString(data) != null){
+                        if(TencentDeskUtils.checkString(data) != null){
                           showName = data ?? e;
                         }
                       }
                     }else{
                       final String? data = model.groupUserShowName[e];
-                      if(TencentUtils.checkString(data) != null){
+                      if(TencentDeskUtils.checkString(data) != null){
                         showName = data ?? e;
                       }
                     }

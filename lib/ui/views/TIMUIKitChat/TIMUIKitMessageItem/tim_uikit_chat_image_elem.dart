@@ -317,15 +317,15 @@ class _TIMUIKitImageElem extends TIMUIKitState<TIMUIKitImageElem> {
       ));
 
   bool checkIfDownloadSuccess() {
-    final localUrl = TencentUtils.checkString(
+    final localUrl = TencentDeskUtils.checkString(
             model.getFileMessageLocation(widget.message.msgID)) ??
         widget.message.imageElem!.imageList![0]!.localUrl;
-    return TencentUtils.checkString(localUrl) != null &&
+    return TencentDeskUtils.checkString(localUrl) != null &&
         File(localUrl!).existsSync();
   }
 
   _onClickOpenImageInNewWindow() {
-    final localUrl = TencentUtils.checkString(
+    final localUrl = TencentDeskUtils.checkString(
             model.getFileMessageLocation(widget.message.msgID)) ??
         widget.message.imageElem!.imageList![0]!.localUrl;
     Future.delayed(const Duration(milliseconds: 0), () async {
@@ -345,7 +345,7 @@ class _TIMUIKitImageElem extends TIMUIKitState<TIMUIKitImageElem> {
     double? positionRadio,
     String? originImgUrl,
   }) {
-    final localUrl = TencentUtils.checkString(
+    final localUrl = TencentDeskUtils.checkString(
             model.getFileMessageLocation(widget.message.msgID)) ??
         widget.message.imageElem!.imageList![0]!.localUrl;
     if (checkIfDownloadSuccess()) {
@@ -355,7 +355,7 @@ class _TIMUIKitImageElem extends TIMUIKitState<TIMUIKitImageElem> {
           mediaLocalPath: localUrl ?? "",
           onClickOrigin: () => _onClickOpenImageInNewWindow());
     } else {
-      if (TencentUtils.checkString(originImgUrl) != null) {
+      if (TencentDeskUtils.checkString(originImgUrl) != null) {
         TUIKitWidePopup.showMedia(
             aspectRatio: positionRadio,
             context: context,
@@ -483,7 +483,7 @@ class _TIMUIKitImageElem extends TIMUIKitState<TIMUIKitImageElem> {
                     fadeInDuration: const Duration(milliseconds: 0),
                   ));
       } else {
-        final imgPath = (TencentUtils.checkString(smallLocalPath) != null
+        final imgPath = (TencentDeskUtils.checkString(smallLocalPath) != null
             ? smallLocalPath
             : originLocalPath)!;
         return Hero(
@@ -518,7 +518,7 @@ class _TIMUIKitImageElem extends TIMUIKitState<TIMUIKitImageElem> {
           heroTag: heroTag,
           isNetworkImage: isNetworkImage,
           imgUrl: webPath ?? smallImg?.url ?? originalImg?.url ?? "",
-          imgPath: (TencentUtils.checkString(originLocalPath) != null
+          imgPath: (TencentDeskUtils.checkString(originLocalPath) != null
                   ? originLocalPath
                   : smallLocalPath) ??
               ""),
@@ -538,21 +538,21 @@ class _TIMUIKitImageElem extends TIMUIKitState<TIMUIKitImageElem> {
   }
 
   void initImages() async {
-    final zeroImageLocal = TencentUtils.checkString(widget
+    final zeroImageLocal = TencentDeskUtils.checkString(widget
         .message.imageElem?.imageList
         ?.firstWhereOrNull((element) => element?.type == 0)
         ?.localUrl);
-    final oneImageLocal = TencentUtils.checkString(widget
+    final oneImageLocal = TencentDeskUtils.checkString(widget
         .message.imageElem?.imageList
         ?.firstWhereOrNull((element) => element?.type == 1)
         ?.localUrl);
-    final twoImageLocal = TencentUtils.checkString(widget
+    final twoImageLocal = TencentDeskUtils.checkString(widget
         .message.imageElem?.imageList
         ?.firstWhereOrNull((element) => element?.type == 2)
         ?.localUrl);
 
     if (!PlatformUtils().isWeb &&
-        TencentUtils.checkString(widget.message.msgID) != null) {
+        TencentDeskUtils.checkString(widget.message.msgID) != null) {
       if ((widget.message.imageElem?.imageList) == null ||
           widget.message.imageElem!.imageList!.isEmpty) {
         final response = await _messageService.getMessageOnlineUrl(
@@ -633,9 +633,9 @@ class _TIMUIKitImageElem extends TIMUIKitState<TIMUIKitImageElem> {
     }
 
     try {
-      if ((TencentUtils.checkString(smallImg?.localUrl) != null &&
+      if ((TencentDeskUtils.checkString(smallImg?.localUrl) != null &&
               File((smallImg?.localUrl!)!).existsSync()) ||
-          (TencentUtils.checkString(originalImg?.localUrl) != null &&
+          (TencentDeskUtils.checkString(originalImg?.localUrl) != null &&
               File((originalImg?.localUrl!)!).existsSync())) {
         return _renderAllImage(
             smallLocalPath: smallImg?.localUrl ?? "",

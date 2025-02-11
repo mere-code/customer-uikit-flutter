@@ -28,9 +28,9 @@ class AtMemberPanel extends StatefulWidget {
 }
 
 _getShowName(V2TimGroupMemberFullInfo? item) {
-  return TencentUtils.checkStringWithoutSpace(item?.nameCard) ??
-      TencentUtils.checkStringWithoutSpace(item?.nickName) ??
-      TencentUtils.checkStringWithoutSpace(item?.userID);
+  return TencentDeskUtils.checkStringWithoutSpace(item?.nameCard) ??
+      TencentDeskUtils.checkStringWithoutSpace(item?.nickName) ??
+      TencentDeskUtils.checkStringWithoutSpace(item?.userID);
 }
 
 class _AtMemberPanelState extends TIMUIKitState<AtMemberPanel> {

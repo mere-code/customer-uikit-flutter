@@ -399,11 +399,11 @@ class _InputTextFieldState extends TIMUIKitState<TIMUIKitInputTextField> {
   }
 
   String _getShowName(V2TimGroupMemberFullInfo? item) {
-    return TencentUtils.checkStringWithoutSpace(item?.nameCard) ?? TencentUtils.checkStringWithoutSpace(item?.nickName) ?? TencentUtils.checkStringWithoutSpace(item?.userID) ?? "";
+    return TencentDeskUtils.checkStringWithoutSpace(item?.nameCard) ?? TencentDeskUtils.checkStringWithoutSpace(item?.nickName) ?? TencentDeskUtils.checkStringWithoutSpace(item?.userID) ?? "";
   }
 
   mentionMemberInMessage(String? userID, String? nickName) {
-    if (TencentUtils.checkString(userID) == null) {
+    if (TencentDeskUtils.checkString(userID) == null) {
       focusNode.requestFocus();
     } else {
       final memberInfo = widget.model.groupMemberList?.firstWhereOrNull((element) => element?.userID == userID) ??
@@ -576,14 +576,14 @@ class _InputTextFieldState extends TIMUIKitState<TIMUIKitInputTextField> {
         }
         List<V2TimGroupMemberFullInfo> showAtMemberList = (model.groupMemberList ?? [])
             .where((element) {
-              final showName = (TencentUtils.checkStringWithoutSpace(element?.friendRemark) ??
-                      TencentUtils.checkStringWithoutSpace(element?.nameCard) ??
-                      TencentUtils.checkStringWithoutSpace(element?.nickName) ??
-                      TencentUtils.checkStringWithoutSpace(element?.userID) ??
+              final showName = (TencentDeskUtils.checkStringWithoutSpace(element?.friendRemark) ??
+                      TencentDeskUtils.checkStringWithoutSpace(element?.nameCard) ??
+                      TencentDeskUtils.checkStringWithoutSpace(element?.nickName) ??
+                      TencentDeskUtils.checkStringWithoutSpace(element?.userID) ??
                       "")
                   .toLowerCase();
               keyword ??= "";
-              return element != null && showName.contains(keyword!.toLowerCase()) && TencentUtils.checkString(showName) != null && element.userID != widget.model.selfMemberInfo?.userID;
+              return element != null && showName.contains(keyword!.toLowerCase()) && TencentDeskUtils.checkString(showName) != null && element.userID != widget.model.selfMemberInfo?.userID;
             })
             .whereType<V2TimGroupMemberFullInfo>()
             .toList();
@@ -776,7 +776,7 @@ class _InputTextFieldState extends TIMUIKitState<TIMUIKitInputTextField> {
         textEditingController.clear();
       }
     }
-    if (widget.initText != oldWidget.initText && TencentUtils.checkString(widget.initText) != null) {
+    if (widget.initText != oldWidget.initText && TencentDeskUtils.checkString(widget.initText) != null) {
       textEditingController.text = widget.initText!;
       focusNode.requestFocus();
     }

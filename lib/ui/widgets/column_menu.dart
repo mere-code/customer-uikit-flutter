@@ -4,25 +4,25 @@ import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_base.dart';
 import 'package:tencent_cloud_customer/base_widgets/tim_ui_kit_state.dart';
 import 'package:tencent_cloud_customer/tencent_cloud_customer.dart';
 
-class ColumnMenuItem {
+class DeskColumnMenuItem {
   String label;
   VoidCallback onClick;
   Widget? icon;
 
-  ColumnMenuItem({required this.label, required this.onClick, this.icon});
+  DeskColumnMenuItem({required this.label, required this.onClick, this.icon});
 }
 
-class TUIKitColumnMenu extends StatefulWidget {
-  const TUIKitColumnMenu({Key? key, required this.data, this.padding}) : super(key: key);
+class TUIKitDeskColumnMenu extends StatefulWidget {
+  const TUIKitDeskColumnMenu({Key? key, required this.data, this.padding}) : super(key: key);
 
-  final List<ColumnMenuItem> data;
+  final List<DeskColumnMenuItem> data;
   final EdgeInsetsGeometry? padding;
 
   @override
-  State<StatefulWidget> createState() => TUIKitColumnMenuState();
+  State<StatefulWidget> createState() => TUIKitDeskColumnMenuState();
 }
 
-class TUIKitColumnMenuState extends TIMUIKitState<TUIKitColumnMenu> {
+class TUIKitDeskColumnMenuState extends TIMUIKitState<TUIKitDeskColumnMenu> {
 
   List<Widget> renderMenuItems(TUITheme theme) {
     return widget.data

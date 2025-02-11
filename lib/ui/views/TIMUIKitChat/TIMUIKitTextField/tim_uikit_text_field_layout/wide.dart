@@ -57,7 +57,7 @@ class DesktopControlBarItem {
       required this.onClick,
       this.showName,
       this.size})
-      : assert(icon != null || TencentUtils.checkString(imgPath) != null || TencentUtils.checkString(svgPath) != null);
+      : assert(icon != null || TencentDeskUtils.checkString(imgPath) != null || TencentDeskUtils.checkString(svgPath) != null);
 }
 
 class DesktopControlBarConfig {
@@ -516,7 +516,7 @@ class _TIMUIKitTextFieldLayoutWideState extends TIMUIKitState<TIMUIKitTextFieldL
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(2)),
               padding: const EdgeInsets.all(4),
               child: () {
-                if (TencentUtils.checkString(e.svgPath) != null) {
+                if (TencentDeskUtils.checkString(e.svgPath) != null) {
                   return SvgPicture.asset(
                     e.svgPath!,
                     package: defaultItems.contains(e.item) ? 'tencent_cloud_customer' : null,
@@ -525,7 +525,7 @@ class _TIMUIKitTextFieldLayoutWideState extends TIMUIKitState<TIMUIKitTextFieldL
                     height: e.size ?? 16,
                   );
                 }
-                if (TencentUtils.checkString(e.imgPath) != null) {
+                if (TencentDeskUtils.checkString(e.imgPath) != null) {
                   return Image.asset(
                     e.imgPath!,
                     package: defaultItems.contains(e.item) ? 'tencent_cloud_customer' : null,
@@ -667,7 +667,7 @@ class _TIMUIKitTextFieldLayoutWideState extends TIMUIKitState<TIMUIKitTextFieldL
           File file = File(result.files.single.path!);
           final String savePath = file.path;
           final String type =
-              TencentUtils.getFileType((savePath.split(".")[savePath.split(".").length - 1]).toLowerCase())
+              TencentDeskUtils.getFileType((savePath.split(".")[savePath.split(".").length - 1]).toLowerCase())
                   .split("/")[0];
 
           if (type == "image") {

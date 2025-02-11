@@ -125,8 +125,8 @@ class _TIMUIKitVideoElemState extends TIMUIKitState<TIMUIKitVideoElem> {
   }
 
   downloadMessageDetailAndSave() async {
-    if (TencentUtils.checkString(widget.message.msgID) != null) {
-      if (TencentUtils.checkString(widget.message.videoElem!.videoUrl) ==
+    if (TencentDeskUtils.checkString(widget.message.msgID) != null) {
+      if (TencentDeskUtils.checkString(widget.message.videoElem!.videoUrl) ==
           null) {
         final response = await _messageService.getMessageOnlineUrl(
             msgID: widget.message.msgID!);
@@ -138,7 +138,7 @@ class _TIMUIKitVideoElemState extends TIMUIKitState<TIMUIKitVideoElem> {
         }
       }
       if (!PlatformUtils().isWeb) {
-        if (TencentUtils.checkString(widget.message.videoElem!.localVideoUrl) ==
+        if (TencentDeskUtils.checkString(widget.message.videoElem!.localVideoUrl) ==
                 null ||
             !File(widget.message.videoElem!.localVideoUrl!).existsSync()) {
           _messageService.downloadMessage(
@@ -147,7 +147,7 @@ class _TIMUIKitVideoElemState extends TIMUIKitState<TIMUIKitVideoElem> {
               imageType: 0,
               isSnapshot: false);
         }
-        if (TencentUtils.checkString(
+        if (TencentDeskUtils.checkString(
                     widget.message.videoElem!.localSnapshotUrl) ==
                 null ||
             !File(widget.message.videoElem!.localSnapshotUrl!).existsSync()) {
@@ -199,8 +199,8 @@ class _TIMUIKitVideoElemState extends TIMUIKitState<TIMUIKitVideoElem> {
           final videoElem = widget.message.videoElem;
           if (videoElem != null) {
             final localVideoUrl =
-                TencentUtils.checkString(videoElem.localVideoUrl);
-            final videoPath = TencentUtils.checkString(videoElem.videoPath);
+                TencentDeskUtils.checkString(videoElem.localVideoUrl);
+            final videoPath = TencentDeskUtils.checkString(videoElem.videoPath);
             final videoUrl = videoElem.videoUrl;
             if (localVideoUrl != null) {
               launchDesktopFile(localVideoUrl);
@@ -216,7 +216,7 @@ class _TIMUIKitVideoElemState extends TIMUIKitState<TIMUIKitVideoElem> {
               //     context: context,
               //     mediaPath: videoPath,
               //     onClickOrigin: () => launchDesktopFile(videoPath));
-            } else if (TencentUtils.isTextNotEmpty(videoUrl)) {
+            } else if (TencentDeskUtils.isTextNotEmpty(videoUrl)) {
               onTIMCallback(TIMCallback(
                   infoCode: 6660414,
                   infoRecommendText: TIM_t("正在下载中"),

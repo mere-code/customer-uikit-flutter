@@ -110,7 +110,7 @@ class _TIMUIKitTextTranslationElemState extends TIMUIKitState<TIMUIKitTextTransl
         isShowJumpState ? const Color.fromRGBO(245, 166, 35, 1) : (defaultStyle ?? widget.backgroundColor);
 
     final LocalCustomDataModel localCustomData =
-        LocalCustomDataModel.fromMap(json.decode(TencentUtils.checkString(widget.message.localCustomData) ?? "{}"));
+        LocalCustomDataModel.fromMap(json.decode(TencentDeskUtils.checkString(widget.message.localCustomData) ?? "{}"));
     final String? translateText = localCustomData.translatedText;
 
     final textWithLink = LinkPreviewEntry.getHyperlinksText(
@@ -124,7 +124,7 @@ class _TIMUIKitTextTranslationElemState extends TIMUIKitState<TIMUIKitTextTransl
         customEmojiStickerList: widget.customEmojiStickerList,
         isEnableTextSelection: widget.chatModel.chatConfig.isEnableTextSelection ?? false);
 
-    return TencentUtils.checkString(translateText) != null
+    return TencentDeskUtils.checkString(translateText) != null
         ? Container(
             margin: const EdgeInsets.only(top: 6),
             padding:

@@ -1,6 +1,6 @@
 name: tencent_cloud_customer
 description: A Flutter library for seamless integration of Tencent Cloud Desk service on customer side.
-version: 1.0.0
+version: 1.1.0
 homepage: https://cloud.tencent.com/document/product/269/96056
 repository: https://github.com/RoleWong/customer-uikit-flutter
 documentation: https://cloud.tencent.com/document/product/269/113293
