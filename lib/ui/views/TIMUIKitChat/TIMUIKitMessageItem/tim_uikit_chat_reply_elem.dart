@@ -67,7 +67,7 @@ class _TIMUIKitReplyElemState extends TIMUIKitState<TIMUIKitReplyElem> {
   MessageRepliedData? _getRepliedMessage() {
     try {
       final CloudCustomData messageCloudCustomData = CloudCustomData.fromJson(json.decode(
-          TencentUtils.checkString(widget.message.cloudCustomData) != null ? widget.message.cloudCustomData! : "{}"));
+          TencentDeskUtils.checkString(widget.message.cloudCustomData) != null ? widget.message.cloudCustomData! : "{}"));
       if (messageCloudCustomData.messageReply != null) {
         final MessageRepliedData repliedMessage = MessageRepliedData.fromJson(messageCloudCustomData.messageReply!);
         return repliedMessage;
@@ -133,7 +133,7 @@ class _TIMUIKitReplyElemState extends TIMUIKitState<TIMUIKitReplyElem> {
     try {
       final RepliedMessageAbstract repliedMessageAbstract =
           RepliedMessageAbstract.fromJson(jsonDecode(repliedMessage?.messageAbstract ?? ""));
-      if (TencentUtils.checkString(repliedMessageAbstract.summary) != null) {
+      if (TencentDeskUtils.checkString(repliedMessageAbstract.summary) != null) {
         return _defaultRawMessageText(repliedMessageAbstract.summary!, theme);
       }
       return _defaultRawMessageText(repliedMessage?.messageAbstract ?? TIM_t("[未知消息]"), theme);

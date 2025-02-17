@@ -138,9 +138,9 @@ class _TIMUIKitFileElemState extends TIMUIKitState<TIMUIKitFileElem> {
     if (PlatformUtils().isWeb) {
       return true;
     }
-    String savePath = TencentUtils.checkString(
+    String savePath = TencentDeskUtils.checkString(
             model.getFileMessageLocation(widget.messageID)) ??
-        TencentUtils.checkString(widget.message.fileElem!.localUrl) ??
+        TencentDeskUtils.checkString(widget.message.fileElem!.localUrl) ??
         widget.message.fileElem?.path ??
         '';
 

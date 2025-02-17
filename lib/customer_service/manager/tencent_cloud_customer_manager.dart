@@ -38,4 +38,8 @@ class TencentCloudCustomerManager {
       context: context,
     );
   }
+
+  Future<V2TimCallback> dispose(){
+    return _tencentCloudCustomerManagerImpl.dispose();
+  }
 }

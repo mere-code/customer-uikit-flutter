@@ -17,7 +17,7 @@ class MessageReactionUtils {
     CloudCustomData messageCloudCustomData;
     try {
       messageCloudCustomData = CloudCustomData.fromJson(json.decode(
-          TencentUtils.checkString(message.cloudCustomData) != null
+          TencentDeskUtils.checkString(message.cloudCustomData) != null
               ? message.cloudCustomData!
               : "{}"));
     } catch (e) {

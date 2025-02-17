@@ -205,7 +205,7 @@ class _TIMUIKitTextElemState extends TIMUIKitState<TIMUIKitTextElem> {
         ) : null,
         borderRadius: widget.borderRadius ?? borderRadius,
       ),
-      constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.75),
+      constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

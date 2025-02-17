@@ -1,4 +1,4 @@
-class TencentUtils{
+class TencentDeskUtils{
   static bool isTextNotEmpty(String? text){
     return text != null && text.isNotEmpty;
   }

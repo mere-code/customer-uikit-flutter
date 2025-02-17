@@ -276,7 +276,7 @@ class TCustomerChatGlobalModel extends ChangeNotifier implements TIMUIKitClass {
       if (conversationItem == null || conversationItem.type == null) {
         return;
       }
-      final conversationID = TencentUtils.checkString(conversationItem.userID) ?? TencentUtils.checkString(conversationItem.groupID) ?? conversationItem.conversationID;
+      final conversationID = TencentDeskUtils.checkString(conversationItem.userID) ?? TencentDeskUtils.checkString(conversationItem.groupID) ?? conversationItem.conversationID;
       if (messageListMap[conversationID] == null || messageListMap[conversationID]!.isEmpty) {
         index++;
         Future.delayed(Duration(milliseconds: 500 * index), () {
@@ -394,7 +394,7 @@ class TCustomerChatGlobalModel extends ChangeNotifier implements TIMUIKitClass {
 
   _editStatusCheck(V2TimMessage msg) {
     bool isStatusMessage = false;
-    if (msg.customElem != null && TencentUtils.checkString(msg.groupID) == null) {
+    if (msg.customElem != null && TencentDeskUtils.checkString(msg.groupID) == null) {
       V2TimCustomElem customElem = msg.customElem!;
       String sender = msg.sender ?? "";
       if (customElem.data!.isNotEmpty) {
@@ -509,7 +509,7 @@ class TCustomerChatGlobalModel extends ChangeNotifier implements TIMUIKitClass {
   }
 
   _onReceiveNewMsg(V2TimMessage msgComing) async {
-    final convID = TencentUtils.checkString(msgComing.userID) ?? msgComing.groupID;
+    final convID = TencentDeskUtils.checkString(msgComing.userID) ?? msgComing.groupID;
     if(convID != currentSelectedConv){
       return;
     }
@@ -527,7 +527,7 @@ class TCustomerChatGlobalModel extends ChangeNotifier implements TIMUIKitClass {
     }
 
     _checkFromUserisActive(msgComing);
-    final convType = TencentUtils.checkString(newMsg.groupID) != null ? ConvType.group : ConvType.c2c;
+    final convType = TencentDeskUtils.checkString(newMsg.groupID) != null ? ConvType.group : ConvType.c2c;
     if (convID != null && convID == currentSelectedConv) {
       // when receive new message in the current chat page, we need to mark the message as read.
       if (chatConfig.isAutoReportRead) {
@@ -601,7 +601,7 @@ class TCustomerChatGlobalModel extends ChangeNotifier implements TIMUIKitClass {
 
   onMessageModified(V2TimMessage modifiedMessage, [String? convID]) async {
     modifiedMessage.id = DateTime.now().millisecondsSinceEpoch.toString();
-    final String? exactId = TencentUtils.checkString(modifiedMessage.userID) ?? TencentUtils.checkString(modifiedMessage.groupID);
+    final String? exactId = TencentDeskUtils.checkString(modifiedMessage.userID) ?? TencentDeskUtils.checkString(modifiedMessage.groupID);
     final activeMessageList = _messageListMap[convID ?? exactId];
     if (activeMessageList == null || activeMessageList.isEmpty) {
       return;
@@ -699,7 +699,7 @@ class TCustomerChatGlobalModel extends ChangeNotifier implements TIMUIKitClass {
   }
 
   void _updateMessageAndDownloadFile(V2TimMessage message, V2TimMessageDownloadProgress messageProgress) {
-    updateAsyncMessage(message, TencentUtils.checkString(message.userID) ?? TencentUtils.checkString(message.groupID) ?? "");
+    updateAsyncMessage(message, TencentDeskUtils.checkString(message.userID) ?? TencentDeskUtils.checkString(message.groupID) ?? "");
 
     _updateMessageLocationAndDownloadFile(messageProgress);
   }
@@ -804,8 +804,8 @@ class TCustomerChatGlobalModel extends ChangeNotifier implements TIMUIKitClass {
     V2TimMsgCreateInfoResult? textMessageInfo = await _messageService.createTextMessage(text: text);
 
     textMessageInfo = await _messageService.createTextAtMessage(
-        text: text + "\n@${TencentUtils.checkString(messageBeenReplied.nickName) ?? TencentUtils.checkString(messageBeenReplied.sender) ?? TencentUtils.checkString(messageBeenReplied.userID)}",
-        atUserList: [TencentUtils.checkString(messageBeenReplied.sender) ?? TencentUtils.checkString(messageBeenReplied.userID) ?? ""]);
+        text: text + "\n@${TencentDeskUtils.checkString(messageBeenReplied.nickName) ?? TencentDeskUtils.checkString(messageBeenReplied.sender) ?? TencentDeskUtils.checkString(messageBeenReplied.userID)}",
+        atUserList: [TencentDeskUtils.checkString(messageBeenReplied.sender) ?? TencentDeskUtils.checkString(messageBeenReplied.userID) ?? ""]);
 
     final V2TimMessage? messageInfo = textMessageInfo!.messageInfo;
 

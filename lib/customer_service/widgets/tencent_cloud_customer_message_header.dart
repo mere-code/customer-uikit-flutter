@@ -10,8 +10,8 @@ class TencentCloudCustomerMessageHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final option1 = TencentUtils.checkString(conversation?.showName) ??
-        TencentUtils.checkString(conversation?.userID) ??
+    final option1 = TencentDeskUtils.checkString(conversation?.showName) ??
+        TencentDeskUtils.checkString(conversation?.userID) ??
         TIM_t("智能客服");
     return Container(
       padding: EdgeInsets.only(
@@ -45,7 +45,7 @@ class TencentCloudCustomerMessageHeader extends StatelessWidget {
               ),
             ),
           ),
-          if (TencentUtils.checkString(conversation?.faceUrl) != null)
+          if (TencentDeskUtils.checkString(conversation?.faceUrl) != null)
             Container(
               width: 32,
               height: 32,
@@ -55,13 +55,13 @@ class TencentCloudCustomerMessageHeader extends StatelessWidget {
               child: Avatar(
                 borderRadius: BorderRadius.circular(18),
                 faceUrl: conversation!.faceUrl!,
-                showName: TencentUtils.checkString(conversation?.showName) ??
-                    TencentUtils.checkString(conversation?.userID) ??
+                showName: TencentDeskUtils.checkString(conversation?.showName) ??
+                    TencentDeskUtils.checkString(conversation?.userID) ??
                     TIM_t("智能客服"),
               ),
             ),
           Text(
-            TencentUtils.checkString(headerLabel) ?? TIM_t_para("Hi，我是{{option1}}", "Hi，我是$option1")(option1: option1),
+            TencentDeskUtils.checkString(headerLabel) ?? TIM_t_para("Hi，我是{{option1}}", "Hi，我是$option1")(option1: option1),
             style: const TextStyle(
               fontSize: 16,
               color: Colors.black87,

@@ -78,7 +78,7 @@ class _TIMUIKitMessageReactionWrapperState
     CloudCustomData messageCloudCustomData;
     try {
       messageCloudCustomData = CloudCustomData.fromJson(json.decode(
-          TencentUtils.checkString(widget.message.cloudCustomData) != null
+          TencentDeskUtils.checkString(widget.message.cloudCustomData) != null
               ? widget.message.cloudCustomData!
               : "{}"));
     } catch (e) {

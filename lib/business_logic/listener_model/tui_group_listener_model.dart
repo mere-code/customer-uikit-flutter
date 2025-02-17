@@ -3,8 +3,6 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
-import 'package:tencent_im_base/tencent_im_base.dart';
-import 'package:tencent_cloud_chat_sdk/enum/group_change_info_type.dart';
 import 'package:tencent_cloud_customer/business_logic/view_models/tui_chat_global_model.dart';
 import 'package:tencent_cloud_customer/data_services/group/group_services.dart';
 import 'package:tencent_cloud_customer/data_services/services_locatar.dart';

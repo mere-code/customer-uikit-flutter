@@ -368,7 +368,7 @@ class TIMUIKitChatController {
             .whereType<V2TimGroupMemberFullInfo>()
             .toList();
 
-    return TencentUtils.checkString(keyword) == null
+    return TencentDeskUtils.checkString(keyword) == null
         ? memberList
         : memberList.where((e) {
             final userID = e.userID;

@@ -81,20 +81,6 @@ TencentCloudCustomer.navigate(
 
 ---
 
-## Example Workflow
-
-1. Initialize the SDK with your Chat credentials.
-2. Add the `navigate` method to open the chat page in your app.
-3. Customize the configuration globally or per session based on your customer service needs.
-
----
-
-## Why Choose Tencent Cloud Desk Customer UIKit?
-
-This library is purpose-built to simplify the integration of customer service features into your Flutter app. With its intuitive API and robust customization options, **Tencent Cloud Desk Customer UIKit** reduces development time while providing a premium user experience for customer interactions.
-
----
-
 ## Learn More
 
 Refer to the official [Tencent Cloud Desk Documentation](https://www.tencentcloud.com/document/product/1047/63268) for detailed guidance.

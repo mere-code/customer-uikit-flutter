@@ -15,8 +15,12 @@ class TencentCloudCustomerLogger {
 
   TracerProviderBase? _tracerProvider;
   otApi.Tracer? _tracer;
+  bool _initialized = false;
 
   void init() {
+    if(_initialized){
+      return;
+    }
     final resource = Resource([
       otApi.Attribute.fromString('service.name', 'flutter-customer'),
       otApi.Attribute.fromString('tps.tenant.id', 'tccc'),
@@ -39,6 +43,7 @@ class TencentCloudCustomerLogger {
 
     otApi.registerGlobalTracerProvider(_tracerProvider!);
     _tracer = otApi.globalTracerProvider.getTracer('tencent-cloud-customer-flutter');
+    _initialized = true;
   }
 
   void reportSpan(String name, {List<otApi.Attribute>? attributes}) {

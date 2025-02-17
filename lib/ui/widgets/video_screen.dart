@@ -211,7 +211,7 @@ class _VideoScreenState extends TIMUIKitState<VideoScreen> {
 
   setVideoPlayerController() async {
     if (!PlatformUtils().isWeb) {
-      if (TencentUtils.checkString(widget.message.msgID) != null && widget.videoElement.localVideoUrl == null) {
+      if (TencentDeskUtils.checkString(widget.message.msgID) != null && widget.videoElement.localVideoUrl == null) {
         String savePath = model.getFileMessageLocation(widget.message.msgID);
         File f = File(savePath);
         if (f.existsSync()) {
@@ -221,20 +221,20 @@ class _VideoScreenState extends TIMUIKitState<VideoScreen> {
     }
 
     VideoPlayerController player = PlatformUtils().isWeb
-        ? ((TencentUtils.checkString(widget.videoElement.videoPath) != null) || widget.message.status == MessageStatus.V2TIM_MSG_STATUS_SENDING
+        ? ((TencentDeskUtils.checkString(widget.videoElement.videoPath) != null) || widget.message.status == MessageStatus.V2TIM_MSG_STATUS_SENDING
             ? VideoPlayerController.networkUrl(
                 Uri.parse(widget.videoElement.videoPath!),
               )
-            : (TencentUtils.checkString(widget.videoElement.localVideoUrl) == null)
+            : (TencentDeskUtils.checkString(widget.videoElement.localVideoUrl) == null)
                 ? VideoPlayerController.networkUrl(
                     Uri.parse(widget.videoElement.videoUrl!),
                   )
                 : VideoPlayerController.networkUrl(
                     Uri.parse(widget.videoElement.localVideoUrl!),
                   ))
-        : ((TencentUtils.checkString(widget.videoElement.videoPath) != null || widget.message.status == MessageStatus.V2TIM_MSG_STATUS_SENDING) && File(widget.videoElement.videoPath!).existsSync())
+        : ((TencentDeskUtils.checkString(widget.videoElement.videoPath) != null || widget.message.status == MessageStatus.V2TIM_MSG_STATUS_SENDING) && File(widget.videoElement.videoPath!).existsSync())
             ? VideoPlayerController.file(File(widget.videoElement.videoPath!))
-            : (TencentUtils.checkString(widget.videoElement.localVideoUrl) == null)
+            : (TencentDeskUtils.checkString(widget.videoElement.localVideoUrl) == null)
                 ? VideoPlayerController.networkUrl(
                     Uri.parse(widget.videoElement.videoUrl!),
                   )

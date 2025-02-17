@@ -212,7 +212,7 @@ class TUIChatSeparateViewModel extends ChangeNotifier {
       _groupUserShowName[element] = element;
     }
 
-    final String groupID = TencentUtils.checkString(_groupID) ?? conversationID;
+    final String groupID = TencentDeskUtils.checkString(_groupID) ?? conversationID;
 
     if (filteredList.isNotEmpty) {
       final res = await TencentImSDKPlugin.manager
@@ -221,10 +221,10 @@ class TUIChatSeparateViewModel extends ChangeNotifier {
       if (res?.code == 0 && res?.data != null) {
         final data = res!.data;
         for (final userInfo in data!) {
-          final showName = TencentUtils.checkString(userInfo.nameCard) ??
-              TencentUtils.checkString(userInfo.nickName) ??
-              TencentUtils.checkString(userInfo.userID);
-          if (TencentUtils.checkString(showName) != null) {
+          final showName = TencentDeskUtils.checkString(userInfo.nameCard) ??
+              TencentDeskUtils.checkString(userInfo.nickName) ??
+              TencentDeskUtils.checkString(userInfo.userID);
+          if (TencentDeskUtils.checkString(showName) != null) {
             _groupUserShowName[userInfo.userID] = showName ?? userInfo.userID;
           }
         }
@@ -501,7 +501,7 @@ class TUIChatSeparateViewModel extends ChangeNotifier {
         await _messageService.translateText(originText, targetMessage);
 
     final LocalCustomDataModel localCustomData = LocalCustomDataModel.fromMap(
-        json.decode(TencentUtils.checkString(message.localCustomData) ?? "{}"));
+        json.decode(TencentDeskUtils.checkString(message.localCustomData) ?? "{}"));
     localCustomData.translatedText = translatedText;
     message.localCustomData = json.encode(localCustomData.toMap());
     globalModel.onMessageModified(message);
@@ -919,7 +919,7 @@ class TUIChatSeparateViewModel extends ChangeNotifier {
         _repliedMessage = null;
         final sendMsgRes = await _messageService.sendMessage(
             cloudCustomData:
-                TencentUtils.checkString(messageInfoWithSender?.cloudCustomData) ??
+                TencentDeskUtils.checkString(messageInfoWithSender?.cloudCustomData) ??
                     json.encode(cloudCustomData),
             id: textMessageInfo.id as String,
             offlinePushInfo: tools.buildMessagePushInfo(

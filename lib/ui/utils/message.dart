@@ -83,10 +83,10 @@ class MessageUtils {
         final V2TimGroupMemberFullInfo? groupMemberInfo = groupMemberList
             .firstWhereOrNull((element) => element?.userID == value);
         if (groupMemberInfo != null) {
-          value = TencentUtils.checkString(groupMemberInfo.friendRemark) ??
-              TencentUtils.checkString(groupMemberInfo.nameCard) ??
-              TencentUtils.checkString(groupMemberInfo.nickName) ??
-              TencentUtils.checkString(groupMemberInfo.userID);
+          value = TencentDeskUtils.checkString(groupMemberInfo.friendRemark) ??
+              TencentDeskUtils.checkString(groupMemberInfo.nameCard) ??
+              TencentDeskUtils.checkString(groupMemberInfo.nickName) ??
+              TencentDeskUtils.checkString(groupMemberInfo.userID);
         } else {
           final res = await TencentImSDKPlugin.v2TIMManager
               .getUsersInfo(userIDList: [value ?? ""]);
@@ -94,8 +94,8 @@ class MessageUtils {
             final List<V2TimUserFullInfo> data = res.data ?? [];
             if (data.isNotEmpty) {
               final firstPerson = data[0];
-              value = TencentUtils.checkString(firstPerson.nickName) ??
-                  TencentUtils.checkString(firstPerson.userID);
+              value = TencentDeskUtils.checkString(firstPerson.nickName) ??
+                  TencentDeskUtils.checkString(firstPerson.userID);
             }
           }
         }
@@ -124,9 +124,9 @@ class MessageUtils {
     if(opUser == null){
       return "";
     }
-    return TencentUtils.checkString(opUser.friendRemark) ??
-        TencentUtils.checkString(opUser.nickName) ??
-        TencentUtils.checkString(opUser.userID);
+    return TencentDeskUtils.checkString(opUser.friendRemark) ??
+        TencentDeskUtils.checkString(opUser.nickName) ??
+        TencentDeskUtils.checkString(opUser.userID);
   }
 
   static String? _getMemberNickName(V2TimGroupMemberInfo e) {

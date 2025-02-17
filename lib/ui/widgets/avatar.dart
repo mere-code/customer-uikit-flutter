@@ -36,7 +36,7 @@ class Avatar extends TIMUIKitStatelessWidget {
     Widget defaultAvatar() {
       if (type == 1) {
         return Image.asset(
-            TencentUtils.checkString(
+            TencentDeskUtils.checkString(
                     selfInfoViewModel.globalConfig?.defaultAvatarAssetPath) ??
                 'images/default_c2c_head.png',
             fit: BoxFit.cover,
@@ -46,7 +46,7 @@ class Avatar extends TIMUIKitStatelessWidget {
                     : 'tencent_cloud_customer');
       } else {
         return Image.asset(
-            TencentUtils.checkString(
+            TencentDeskUtils.checkString(
                     selfInfoViewModel.globalConfig?.defaultAvatarAssetPath) ??
                 'images/default_group_head.png',
             fit: BoxFit.cover,
@@ -81,7 +81,7 @@ class Avatar extends TIMUIKitStatelessWidget {
     ImageProvider defaultAvatar() {
       if (type == 1) {
         return Image.asset(
-                TencentUtils.checkString(selfInfoViewModel
+                TencentDeskUtils.checkString(selfInfoViewModel
                         .globalConfig?.defaultAvatarAssetPath) ??
                     'images/default_c2c_head.png',
                 fit: BoxFit.cover,
@@ -93,7 +93,7 @@ class Avatar extends TIMUIKitStatelessWidget {
             .image;
       } else {
         return Image.asset(
-                TencentUtils.checkString(selfInfoViewModel
+                TencentDeskUtils.checkString(selfInfoViewModel
                         .globalConfig?.defaultAvatarAssetPath) ??
                     'images/default_group_head.png',
                 fit: BoxFit.cover,

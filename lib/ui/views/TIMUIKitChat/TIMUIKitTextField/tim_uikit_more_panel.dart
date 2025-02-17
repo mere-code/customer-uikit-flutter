@@ -440,7 +440,7 @@ class _MorePanelState extends TIMUIKitState<MorePanel> {
         if (result != null && result.files.isNotEmpty) {
           File file = File(result.files.single.path!);
           final String savePath = file.path;
-          final String type = TencentUtils.getFileType(
+          final String type = TencentDeskUtils.getFileType(
                   savePath.split(".")[savePath.split(".").length - 1])
               .split("/")[0];
 

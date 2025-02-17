@@ -250,7 +250,7 @@ class TCustomerCoreServicesImpl implements CoreServices {
     addInitListener();
     initDataModel();
 
-    if (TencentUtils.checkString(_userID) == null) {
+    if (TencentDeskUtils.checkString(_userID) == null) {
       V2TimValueCallback<String> getLoginUserRes =
           await TencentImSDKPlugin.v2TIMManager.getLoginUser();
       if (getLoginUserRes.code == 0) {

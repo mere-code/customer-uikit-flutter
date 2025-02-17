@@ -43,9 +43,9 @@ class RepliedMessageAbstract {
 
   // isNotEmpty method
   bool get isNotEmpty =>
-      TencentUtils.checkString(msgID) != null &&
-      TencentUtils.checkString(timestamp.toString()) != null &&
-      TencentUtils.checkString(seq) != null;
+      TencentDeskUtils.checkString(msgID) != null &&
+      TencentDeskUtils.checkString(timestamp.toString()) != null &&
+      TencentDeskUtils.checkString(seq) != null;
 }
 
 class CloudCustomData {
